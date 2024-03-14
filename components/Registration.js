@@ -1,4 +1,4 @@
-// RegistrationPage.js
+import { MaterialIcons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
@@ -6,16 +6,16 @@ const RegistrationPage = ({ navigation }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleRegistration = () => {
-    // Here you can implement your registration logic, such as sending data to a server
     console.log('Name:', name);
     console.log('Email:', email);
     console.log('Password:', password);
   };
 
   const handleLogin = () => {
-    navigation.navigate('Landing'); // Navigate back to Landing page
+    navigation.navigate('Landing'); 
   };
 
   return (
@@ -34,14 +34,23 @@ const RegistrationPage = ({ navigation }) => {
         keyboardType="email-address"
         value={email}
         onChangeText={setEmail}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />
+        />
+        <View style={styles.passwordContainer}>
+          <TextInput
+            style={styles.passwordInput}
+            placeholder="Password"
+            secureTextEntry={!showPassword}
+            value={password}
+            onChangeText={setPassword}
+          />
+          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+            <MaterialIcons
+              name={showPassword ? 'visibility-off' : 'visibility'}
+              size={24}
+              color="#000"
+            />
+        </TouchableOpacity>
+      </View>
       <TouchableOpacity onPress={handleRegistration}>
         <Text style={styles.button}>Sign Up</Text>
       </TouchableOpacity>
@@ -75,13 +84,26 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 10,
   },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: 10,
+  },
+  passwordInput: {
+    flex: 1,
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    paddingHorizontal: 10,
+  },
   button: {
     backgroundColor: '#335A02',
     color: 'white',
     padding: 10,
     borderRadius: 5,
     textAlign: 'center',
-    width: '100%',
     marginBottom: 10,
   },
   loginText: {

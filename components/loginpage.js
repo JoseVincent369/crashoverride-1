@@ -36,21 +36,21 @@ const LoginPage = ({ navigation }) => {
           keyboardType="email-address"
           value={email}
           onChangeText={setEmail}
-        />
-        <View style={styles.passwordContainer}>
-          <TextInput
-            style={styles.passwordInput}
-            placeholder="Password"
-            secureTextEntry={!showPassword}
-            value={password}
-            onChangeText={setPassword}
           />
-          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-            <MaterialIcons
-              name={showPassword ? 'visibility-off' : 'visibility'}
-              size={24}
-              color="#000"
+          <View style={styles.passwordContainer}>
+            <TextInput
+              style={styles.passwordInput}
+              placeholder="Password"
+              secureTextEntry={!showPassword}
+              value={password}
+              onChangeText={setPassword}
             />
+            <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+              <MaterialIcons
+                name={showPassword ? 'visibility-off' : 'visibility'}
+                size={24}
+                color="#000"
+              />
           </TouchableOpacity>
         </View>
         <TouchableOpacity onPress={handleLogin}>
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   logo: {
-    width: 150, // Adjust the width as needed
-    height: 150, // Adjust the height as needed
+    width: 150, 
+    height: 150, 
     marginBottom: 10,
   },
   formContainer: {
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#335A02',
     color: 'white',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
     textAlign: 'center',
     marginBottom: 10,
   },
