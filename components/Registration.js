@@ -15,7 +15,7 @@ const RegistrationPage = ({ navigation }) => {
   };
 
   const handleLogin = () => {
-    navigation.navigate('Landing'); 
+    navigation.navigate('loginpage'); 
   };
 
   return (
@@ -51,13 +51,13 @@ const RegistrationPage = ({ navigation }) => {
             />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={handleRegistration}>
-        <Text style={styles.button}>Sign Up</Text>
-      </TouchableOpacity>
-      <Text style={styles.loginText}>Already have an account? </Text>
-      <TouchableOpacity onPress={handleLogin}>
-        <Text style={styles.loginLink}>Login</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={handleLogin}>
+          <Text style={styles.button}>sign up</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleLogin}>
+        <Text >Don't have an account? <Text style={styles.loginLink}>log in</Text> </Text>
+        </TouchableOpacity>
+        
     </View>
   );
 };

@@ -1,26 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
-import LandingPage from './components/landingpage';
-import RegistrationPage from './components/Registration';
-import LoginPage from './components/loginpage';
+import { StyleSheet } from 'react-native';
+import landingpage from './components/landingpage';
+import Registration from './components/Registration';
+import loginpage from './components/loginpage';
 import AccountRecovery from './components/AccountRecovery';
 import homepage from './components/homepage';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Landing">
-        <Stack.Screen name="Landing" component={LandingPage}  />
-        <Stack.Screen name="Registration" component={RegistrationPage} />
-        <Stack.Screen name="loginpage" component={LoginPage} />
-        <Stack.Screen name="homepage" component={homepage} />
-        <Stack.Screen name="AccountRecovery" component={AccountRecovery} />
-      </Stack.Navigator>
+      <Drawer.Navigator initialRouteName="Landing">
+        <Drawer.Screen name="landingpage" component={landingpage} />
+        <Drawer.Screen name="Registration" component={Registration} />
+        <Drawer.Screen name="loginpage" component={loginpage} />
+        <Drawer.Screen name="homepage" component={homepage} />
+        <Drawer.Screen name="AccountRecovery" component={AccountRecovery} />
+      </Drawer.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
   );
