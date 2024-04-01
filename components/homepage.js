@@ -3,15 +3,14 @@ import { StyleSheet, View, Text, TouchableOpacity, Image, ScrollView } from 'rea
 
 const Dashboard = ({ navigation }) => {
   const handleLogout = () => {
-    // Clear any user data or authentication tokens here
-    navigation.replace('Landing'); // Replace the current screen with the landingpage screen
+    navigation.navigate('landingpage');
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.headerContainer}>
         <Image source={require('../assets/logo_transparent.png')} style={styles.logo} />
-        <Text style={styles.header}>Welcome to Your Dashboard</Text>
+        <Text style={styles.header}>Welcome to our Store!</Text>
       </View>
       <View style={styles.menuContainer}>
         <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Item1')}>
@@ -27,9 +26,10 @@ const Dashboard = ({ navigation }) => {
           <Text style={styles.menuItemText}>Item 4</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-        <Text style={styles.buttonText}>Logout</Text>
-      </TouchableOpacity>
+      <TouchableOpacity onPress={handleLogout}>
+          <Text style={styles.logoutButton}>Log out</Text>
+        </TouchableOpacity>
+
     </ScrollView>
   );
 };
@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     alignItems: 'center',
     alignSelf: 'center',
+    color: '#FFFFFF',
   },
   buttonText: {
     color: '#FFFFFF',
