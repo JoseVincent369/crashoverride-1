@@ -8,10 +8,10 @@ const Dashboard = ({ navigation }) => {
 
   // Sample data for items
   const items = [
-    { name: 'Item 1', image: require('../assets/item1.jpg'), price: '$10', description: 'Description of Item 1' },
-    { name: 'Item 2', image: require('../assets/item2.jpg'), price: '$15', description: 'Description of Item 2' },
-    { name: 'Item 3', image: require('../assets/item3.jpg'), price: '$20', description: 'Description of Item 3' },
-    { name: 'Item 4', image: require('../assets/item4.jpg'), price: '$25', description: 'Description of Item 4' },
+    { name: 'BURBERRY TRENCH COAT - 2XL BEIGE POLYESTER BLEND', image: require('../assets/item1.jpg'), price: '₱10,500.00', description: 'Vintage beige Burberry trench coat, fits xx-large.' },
+    { name: 'BURBERRY TRENCH COAT - 2XL KHAKI POLYESTER BLEND', image: require('../assets/item2.jpg'), price: '₱9,900.00', description: 'Vintage khaki Burberry trench coat, fits xx-large.' },
+    { name: 'CARL EDWARDS CFS NASCAR JACKET - LARGE BLACK COTTON', image: require('../assets/item3.jpg'), price: '₱9,900.00', description: 'Vintage Carl Edwards black Cfs jacket, fits large.' },
+    { name: 'BILL ELLIOTT 9 COMPETITORS VIEW NASCAR JACKET - 2XL RED COTTON', image: require('../assets/item4.jpg'), price: '₱8,600.00', description: 'Vintage Bill Elliott 9 red Competitors View jacket, fits xx-large.' },
   ];
 
   return (
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     color: '#335A02',
     fontSize: 16,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   menuItemPrice: {
     color: '#335A02',
