@@ -6,6 +6,14 @@ const Dashboard = ({ navigation }) => {
     navigation.navigate('landingpage');
   };
 
+  // Sample data for items
+  const items = [
+    { name: 'Item 1', image: require('../assets/item1.jpg'), price: '$10', description: 'Description of Item 1' },
+    { name: 'Item 2', image: require('../assets/item2.jpg'), price: '$15', description: 'Description of Item 2' },
+    { name: 'Item 3', image: require('../assets/item3.jpg'), price: '$20', description: 'Description of Item 3' },
+    { name: 'Item 4', image: require('../assets/item4.jpg'), price: '$25', description: 'Description of Item 4' },
+  ];
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.headerContainer}>
@@ -13,23 +21,22 @@ const Dashboard = ({ navigation }) => {
         <Text style={styles.header}>Welcome to our Store!</Text>
       </View>
       <View style={styles.menuContainer}>
-        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Item1')}>
-          <Text style={styles.menuItemText}>Item 1</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Item2')}>
-          <Text style={styles.menuItemText}>Item 2</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Item3')}>
-          <Text style={styles.menuItemText}>Item 3</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate('Item4')}>
-          <Text style={styles.menuItemText}>Item 4</Text>
-        </TouchableOpacity>
+        {items.map((item, index) => (
+          <TouchableOpacity 
+            key={index} 
+            style={styles.menuItem} 
+            onPress={() => navigation.navigate(item.name)}
+          >
+            <Image source={item.image} style={styles.menuItemImage} />
+            <Text style={styles.menuItemText}>{item.name}</Text>
+            <Text style={styles.menuItemPrice}>{item.price}</Text>
+            <Text style={styles.menuItemDescription}>{item.description}</Text>
+          </TouchableOpacity>
+        ))}
       </View>
       <TouchableOpacity onPress={handleLogout}>
-          <Text style={styles.logoutButton}>Log out</Text>
-        </TouchableOpacity>
-
+        <Text style={styles.logoutButton}>Log out</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
@@ -69,10 +76,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 20,
   },
+  menuItemImage: {
+    width: 100,
+    height: 100,
+    resizeMode: 'cover',
+    marginBottom: 10,
+  },
   menuItemText: {
     color: '#335A02',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  menuItemPrice: {
+    color: '#335A02',
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  menuItemDescription: {
+    color: '#335A02',
+    fontSize: 14,
+    textAlign: 'center',
   },
   logoutButton: {
     backgroundColor: '#335A02',
@@ -91,4 +115,3 @@ const styles = StyleSheet.create({
 });
 
 export default Dashboard;
-
