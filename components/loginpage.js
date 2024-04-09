@@ -11,7 +11,7 @@ const LoginPage = ({ navigation }) => {
     // Here you can implement your login logic, such as validating credentials
     console.log('Email:', email);
     console.log('Password:', password); // Check password in console
-    navigation.navigate('homepage'); // Navigate to the homepage
+    navigation.navigate('Home'); // Navigate to the homepage
     // Implement your login logic here...
   };
   
