@@ -1,9 +1,23 @@
-import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, Image, ScrollView, Alert } from 'react-native';
+import Footer from './Footer';
 
 const Home = ({ navigation }) => {
-  const handleLogout = () => {
-    navigation.navigate('landingpage');
+  const [cartItems, setCartItems] = useState([]);
+
+  const handleAddToCart = (item) => {
+    console.log('Add to Cart button pressed');
+    setCartItems([...cartItems, item]);
+    Alert.alert('Item added to cart!');
+  };
+
+  const handleBuyNow = () => {
+    console.log('Buy button pressed');
+    if (cartItems.length === 0) {
+      Alert.alert('Your cart is empty. Add items to proceed.');
+    } else {
+      navigation.navigate('Checkout', { cartItems });
+    }
   };
 
   // Group items by category
@@ -39,14 +53,21 @@ const Home = ({ navigation }) => {
                 <Text style={styles.menuItemText}>{item.name}</Text>
                 <Text style={styles.menuItemPrice}>{item.price}</Text>
                 <Text style={styles.menuItemDescription}>{item.description}</Text>
+                <TouchableOpacity onPress={() => handleAddToCart(item)}>
+                  <Text style={styles.addToCartButton}>Add to Cart</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={handleBuyNow}>
+                  <Text style={styles.buyButton}>Buy</Text>
+                </TouchableOpacity>
               </TouchableOpacity>
             ))}
           </View>
         </View>
       ))}
-      <TouchableOpacity onPress={handleLogout}>
+      <TouchableOpacity onPress={() => navigation.navigate('landingpage')}>
         <Text style={styles.logoutButton}>Log out</Text>
       </TouchableOpacity>
+      <Footer />
     </ScrollView>
   );
 };
@@ -117,6 +138,22 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
   },
+  addToCartButton: {
+    backgroundColor: '#FFD700',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 5,
+    marginTop: 10,
+    textAlign: 'center',
+  },
+  buyButton: {
+    backgroundColor: '#33CC33',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 5,
+    marginTop: 10,
+    textAlign: 'center',
+  },
   logoutButton: {
     backgroundColor: '#335A02',
     paddingVertical: 12,
@@ -126,7 +163,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: '#FFFFFF',
     marginTop: 20,
+    marginBottom: 20, // Add marginBottom here
   },
+  
 });
 
 export default Home;

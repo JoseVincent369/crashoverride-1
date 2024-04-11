@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import Footer from './Footer';
 
 const AboutUs = () => {
   // Define data for three persons
@@ -36,6 +37,9 @@ const AboutUs = () => {
           <Text style={styles.bio}>{person.bio}</Text>
         </View>
       ))}
+      <View style={styles.footerContainer}>
+        <Footer />
+      </View>
     </ScrollView>
   );
 };
@@ -46,6 +50,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     padding: 20,
     alignItems: 'center',
+    paddingBottom: 100, // Adjusted paddingBottom
   },
   title: {
     fontSize: 24,
@@ -54,7 +59,7 @@ const styles = StyleSheet.create({
   },
   personContainer: {
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 100, // Adjusted marginBottom for spacing
   },
   image: {
     width: 100,
@@ -73,6 +78,18 @@ const styles = StyleSheet.create({
   },
   bio: {
     textAlign: 'center',
+  },
+  footerContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#FFFFFF',
+    paddingBottom: 20, // Adjusted paddingBottom
+    paddingHorizontal: 20,
+    borderTopWidth: 1,
+    borderTopColor: '#CCCCCC',
+    zIndex: 1000,
   },
 });
 
